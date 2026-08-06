@@ -1,0 +1,10 @@
+# Canonical CI/CD config for hanzoai/passport-saml — read by hanzoai/ci (via
+# .hanzo/workflows/cicd.yml) and by platform.hanzo.ai.
+#
+# Library (npm), TypeScript source. `npm test` is `tsc` followed by nyc mocha —
+# the compile and the suite in one command, which is exactly the gate this repo
+# needs: SAML assertion validation that silently stops being checked is an auth
+# bypass, so the tests are the artifact, not a formality.
+test:
+  - name: unit
+    run: npm ci --no-audit --no-fund && npm test
